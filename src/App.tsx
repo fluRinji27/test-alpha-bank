@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {useTypedSelector} from "./store/hooks/useTypedSelector";
+import {useActions} from "./store/hooks/useAction";
+import {fetchPhotos} from "./store/actions-creators/catalog";
+import ListItem from "./components/ListItem/ListItem";
+import {Button} from "@mui/material";
+import {PhotoItem} from "./types/catalog";
+
+import './index.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {photos, page, limit, loading, error} = useTypedSelector(state => state.catalog)
+    const {fetchPhotos} = useActions()
+
+    const [isSorting, setIsSorting] = useState(false)
+
+    const sortCatalog = (arr: PhotoItem[]) => {
+        return arr.filter(el => el.isFavorite)
+    }
+
+    useEffect(() => {
+        fetchPhotos(page, limit)
+    }, [])
+
+    if (error) return <p>{error}</p>
+    if (loading) return <p>Загрузка...</p>
+    return (
+        <div className="App">
+            {isSorting
+                ? <Button onClick={() => setIsSorting(false)} variant="contained">Сбросить</Button>
+                : <Button onClick={() => setIsSorting(true)} variant="contained">Показать избранные</Button>}
+
+            <div className='list'>
+                {!isSorting
+                    ? photos.map(el => (
+                        <ListItem
+                            key={el.id}
+                            albumId={el.albumId}
+                            id={el.id}
+                            thumbnailUrl={el.thumbnailUrl}
+                            url={el.url}
+                            title={el.title}
+                            isFavorite={el.isFavorite}
+                        />
+                    ))
+                    : sortCatalog(photos).map(el => (
+                        <ListItem
+                            key={el.id}
+                            albumId={el.albumId}
+                            id={el.id}
+                            thumbnailUrl={el.thumbnailUrl}
+                            url={el.url}
+                            title={el.title}
+                            isFavorite={el.isFavorite}
+                        />
+                    ))}
+            </div>
+
+        </div>
+    );
 }
 
 export default App;
