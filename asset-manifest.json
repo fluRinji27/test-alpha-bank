@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/test-alpha-bank/static/css/main.bb00d330.chunk.css",
+    "main.js": "/test-alpha-bank/static/js/main.a9c61525.chunk.js",
+    "main.js.map": "/test-alpha-bank/static/js/main.a9c61525.chunk.js.map",
+    "runtime-main.js": "/test-alpha-bank/static/js/runtime-main.2b51cdc5.js",
+    "runtime-main.js.map": "/test-alpha-bank/static/js/runtime-main.2b51cdc5.js.map",
+    "static/js/2.e22a703c.chunk.js": "/test-alpha-bank/static/js/2.e22a703c.chunk.js",
+    "static/js/2.e22a703c.chunk.js.map": "/test-alpha-bank/static/js/2.e22a703c.chunk.js.map",
+    "index.html": "/test-alpha-bank/index.html",
+    "static/css/main.bb00d330.chunk.css.map": "/test-alpha-bank/static/css/main.bb00d330.chunk.css.map",
+    "static/js/2.e22a703c.chunk.js.LICENSE.txt": "/test-alpha-bank/static/js/2.e22a703c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b51cdc5.js",
+    "static/js/2.e22a703c.chunk.js",
+    "static/css/main.bb00d330.chunk.css",
+    "static/js/main.a9c61525.chunk.js"
+  ]
+}
