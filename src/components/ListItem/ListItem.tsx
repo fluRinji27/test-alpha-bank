@@ -4,6 +4,8 @@ import {useActions} from "../../store/hooks/useAction";
 import {PhotoItem} from "../../types/catalog";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
 
+import {ReactComponent as CloseIcon} from './icon-close.svg'
+
 import classes from './ListItem.module.css'
 
 const ListItem = (props: PhotoItem) => {
@@ -15,12 +17,7 @@ const ListItem = (props: PhotoItem) => {
     return (
         <Card sx={{maxWidth: 345}} className={classes.container}>
             <CardActionArea>
-
-                <img
-                    onClick={() => removePhotoItem(id)}
-                    src="/icon-close.svg"
-                    alt=""
-                />
+                <CloseIcon onClick={() => removePhotoItem(id)}/>
 
                 <CardMedia
                     component="img"
