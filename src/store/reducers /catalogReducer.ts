@@ -24,6 +24,8 @@ export const catalogReducer = (state = initialState, action: PhotoAction): Photo
                         ? {...el, isFavorite: !el.isFavorite}
                         : el)
             }
+        case PhotosActionTypes.REMOVE_PHOTO_ITEM:
+            return {...state, photos: state.photos.filter(el => el.id !== action.payload)}
         default:
             return state
     }

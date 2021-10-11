@@ -25,3 +25,7 @@ export const fetchPhotos = (page = 1, limit = 10) => {
 export function favoriteHandler(id: number): PhotoAction {
     return {type: PhotosActionTypes.FAVORITE_HANDLER, payload: id}
 }
+
+export function removePhotoItem(id: number): PhotoAction {
+    return {type: PhotosActionTypes.REMOVE_PHOTO_ITEM, payload: id}
+}

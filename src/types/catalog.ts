@@ -19,7 +19,8 @@ export enum PhotosActionTypes {
     FETCH_PHOTOS = 'FETCH_PHOTOS',
     FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS',
     FETCH_PHOTOS_ERROR = 'FETCH_PHOTOS_ERROR',
-    FAVORITE_HANDLER = 'FAVORITE_HANDLER'
+    FAVORITE_HANDLER = 'FAVORITE_HANDLER',
+    REMOVE_PHOTO_ITEM = 'REMOVE_PHOTO_ITEM'
 }
 
 interface fetchPhotos {
@@ -41,5 +42,14 @@ interface isFavoriteHandler {
     payload: number
 }
 
+interface removePhotoItem {
+    type: PhotosActionTypes.REMOVE_PHOTO_ITEM
+    payload: number
+}
 
-export type PhotoAction = fetchPhotos | fetchPhotosSuccess | fetchPhotosError | isFavoriteHandler
+
+export type PhotoAction = fetchPhotos
+    | fetchPhotosSuccess
+    | fetchPhotosError
+    | isFavoriteHandler
+    | removePhotoItem
